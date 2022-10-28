@@ -1,7 +1,7 @@
 ---
 title: "Responsiveness in immigration enforcement"
 author: "Alexandria King "
-description: "What Organizing Strategies and Election Policies Increase Youth Turnout"
+description: "Do higher rates of youth voter tunrout leade to more liberal results  "
 output:
   distill::distill_article:
     self_contained: false
@@ -9,19 +9,14 @@ output:
 
 
 
-## Project thoughts
-
-As a young voting rights activist and organizer I am interested in studying the impact of different organizing strategies and election administrative policies that mobilize young voters. 
-
-There is a plethora of research being conducted by the Center for Information and Research on Civic Learning and Engagement (or Circle) at Tisch College of Tufts Univeristy measuring youth turnout and engagement. I would need help tracking down the actual data sets used in these studies but I would like to compare studies such as one done measuring the rate of youth turnout in states where absentee mail in voting was automatic in 2020. 
-
-See: https://circle.tufts.edu/latest-research/half-youth-voted-2020-11-point-increase-2016 
-
-An example of an organizing tactic, community outreach, and its impact on engaging youth of color: 
-
-https://circle.tufts.edu/latest-research/outreach-community-organizations-key-engaging-youth-color
-
-I envision being able to use data and studies such as this together perhaps using a left join feature to compare different policies and strategies, make inferences as to whether or not these observations are causal, and last but not  make a conclusion on which policy or strategy has the most impact. 
+Milestone 2 
 
 
 
+Do higher rates of young voter turnout among the voting age population have an effect on the results of elections? In this study I hope to examine the effects that increases or decreases have on electoral results. I hypothesize that the as the share of young voters in the population turning out ot vote increases the more democratic or liberal electoral results will be. Conversely, I expect that as the rate of youth voter turnout decreases that the country will experience more conservative shifts in electoral results. In order to measure this I will take data form the census bureau measuring rates of voter turnout and registration from 1964-2020 and join it with data from the clerk at the US House of Representatives showing the proportion of democrats to Republicans that is inclusive of the same years as the data from the Census Bureau. I will need to create a csv file of this data-- however once that is completed it can be read into R and perhaps I can use a left join function to merge the data sets together. My explanatory variable of interest therefore will be rates of voter turnout among voters aged 18-29 in the US from 1964-2020 and perhaps even changes in rates of voter turnout among this group. The outcome variable of interest will be the number of Democrats in Congress in a given year. The data from the clerk's office at the House provides breakdowns of the specific number of Democrats and Republicans. Thus if we measure larger shares of Democrats in Congress during times of increasing rates of young voter turnout as modeled by a positive coefficient from running a regression, this observance would support my thesis. On the other hand if I run a regression and fidn that the oppositie is true, that larger shares of young voters mobilizing in an election was associated with higher shares of Republicans being elected this would quite cealry disprove my hypothesis. The more realistic scenario that would fail to prove my hypothesis is if when if I run a regression and there is no association, and,or weak association between youth voter turnout and shares of Democrats in Congress.  
+
+
+
+https://www.census.gov/data/tables/time-series/demo/voting-and-registration/voting-historical-time-series.html
+
+https://history.house.gov/Institution/Party-Divisions/Party-Divisions/
