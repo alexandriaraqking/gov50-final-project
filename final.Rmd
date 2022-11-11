@@ -1,5 +1,5 @@
 ---
-title: "Responsiveness in immigration enforcement"
+title: "Youth Turnout x Dem Shares"
 author: "Alexandria King "
 description: "Do higher rates of youth voter tunrout leade to more liberal results  "
 output:
@@ -20,3 +20,69 @@ Do higher rates of young voter turnout among the voting age population have an e
 https://www.census.gov/data/tables/time-series/demo/voting-and-registration/voting-historical-time-series.html
 
 https://history.house.gov/Institution/Party-Divisions/Party-Divisions/
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+turnout<- read_csv("TURNOUT.csv")
+maj <- read_csv("CongMaj.csv")
+young_turnout <- read_csv("18-24yrTurnout.csv")
+turnout
+maj
+young_turnout
+```
+
+
+```{r}
+test1 <- young_turnout|>
+  left_join(maj, by = "Election Year")|> 
+test1
+  
+```
+```{r}
+Youth_Turnout_Time <- test1|> 
+  ggplot(mapping= aes(x= `Election Year`, y = `percent of VAP`))+
+  geom_line()+
+  geom_smooth()+
+  labs(x ="Year", y = "Youth Turnout", title = "youth turnout over time")
+Youth_Turnout_Time 
+  
+```
+```{r}
+Youth_Turnout_Prop <- test1|> 
+  ggplot(mapping= aes(x= `percent of VAP`, y = `Democrats`))+
+  geom_line()+
+  geom_smooth()+
+  labs(x ="young turnout", y = "Number of Dems", title = "youth turnout vs dem share")
+Youth_Turnout_Prop
+```
+
+```{r}
+Young_TO_Prop_point<- test1|> 
+  group_by(`Election Year`)|>
+  ggplot(mapping= aes(x= `percent of VAP`, y = Democrats))+
+  geom_point()+ 
+  geom_smooth()
+Young_TO_Prop_point
+  
+```
+```{r}
+Young_TO_Prop_COL<- test1|> 
+  mutate(percent_dems = (100*(Democrats/435)))|>
+  group_by(`percent of VAP`, percent_dems)|>
+  ggplot(mapping= aes(x= `Election Year`))+
+  geom_col()
+Young_TO_Prop_COL
+```
+
+```{r}
+Young_TO_Prop_point_perc<- test1|> 
+  mutate(percent_dems = (100*(Democrats/435)))|>
+  group_by(`Election Year`)|>
+  ggplot(mapping= aes(x= `percent of VAP`, y = percent_dems))+
+  geom_point()+ 
+  geom_smooth()
+Young_TO_Prop_point_perc
+```
+
