@@ -36,7 +36,7 @@ young_turnout
 
 ```{r}
 test1 <- young_turnout|>
-  left_join(maj, by = "Election Year")|> 
+  left_join(maj, by = "Election Year")
 test1
   
 ```
@@ -86,3 +86,18 @@ Young_TO_Prop_point_perc<- test1|>
 Young_TO_Prop_point_perc
 ```
 
+
+```{r}
+mult.fit <- lm(Democrats ~ `percent of VAP` + `Election Year`, data = test1)
+mult.fit
+```
+
+The VAP coefficent, (VAP representing the percent of young voters who turned out relative to the entire voting age population) holding election year constant, is a positive number indicating an on average 26 percent increase of Democrat members of Congress elected to serve in the body with an increase of youth turnout where the election year coefficient technically translates into a negative 130 percent decrease in Dems share holding youth turout constant. 
+The most useful information here is showing an average increase of Dems in Congress with increases in young voter turnout. 
+```{r}
+vap.dems_fit<- lm(Democrats ~ `percent of VAP`, data =test1)
+vap.dems_fit
+```
+
+
+This regression model predicts that with a unit increase in voter turnout there is an approximately 70 percent increase of Democrats in Congress. The intercept indicates that when there is no youth vote there will be 215 members, however, this figure is unrealisitc and should pay more attention to the changes in youth turnout and their effects on Democratic elections. 
